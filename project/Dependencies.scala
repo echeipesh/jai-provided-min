@@ -5,7 +5,6 @@ object Version {
 }
 
 object Dependencies {
-  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.2.9"
   val geotoolsCoverage    = "org.geotools"                 % "gt-coverage"             % Version.geotools
 }
 
