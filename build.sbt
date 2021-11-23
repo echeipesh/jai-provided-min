@@ -9,7 +9,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "jai-provided-min",
     libraryDependencies ++= Seq(
-      geotoolsCoverage % Provided,
+      geotoolsCoverage excludeAll(excludedDependencies: _*),
       jaiCore % Provided,
       jaiCodec % Provided,
       imageIo % Provided
