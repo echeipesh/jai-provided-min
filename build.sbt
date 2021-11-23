@@ -15,5 +15,5 @@ lazy val root = (project in file("."))
       jaiCodec % Provided,
       imageIo % Provided
     ),
-    resolvers += Repositories.osgeoReleases
+    externalResolvers := Repositories.all
   )

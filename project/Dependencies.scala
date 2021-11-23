@@ -13,4 +13,10 @@ object Dependencies {
 
 object Repositories {
   val osgeoReleases   = "osgeo-releases" at "https://repo.osgeo.org/repository/release/"
+  val ivy2Local       = Resolver.file("local", file(Path.userHome.absolutePath + "/.ivy2/local"))(Resolver.ivyStylePatterns)
+  val mavenLocal      = Resolver.mavenLocal
+  val maven           = DefaultMavenRepository
+  val local           = Seq(ivy2Local, mavenLocal)
+  val external        = Seq(osgeoReleases, maven)
+  val all             = external ++ local
 }
