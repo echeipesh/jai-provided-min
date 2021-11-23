@@ -9,7 +9,10 @@ lazy val root = (project in file("."))
   .settings(
     name := "jai-provided-min",
     libraryDependencies ++= Seq(
-      geotoolsCoverage % Provided
+      geotoolsCoverage % Provided,
+      jaiCore % Provided,
+      jaiCodec % Provided,
+      imageIo % Provided
     ),
     resolvers += Repositories.osgeoReleases
   )
