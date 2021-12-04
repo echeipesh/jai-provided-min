@@ -5,14 +5,23 @@ ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
 
+lazy val excludedDependencies = List(
+    ExclusionRule("javax.media", "jai_core"),
+    ExclusionRule("javax.media", "jai_codec"),
+    ExclusionRule("javax.media", "jai_imageio")
+)
+
 lazy val root = (project in file("."))
   .settings(
     name := "jai-provided-min",
     libraryDependencies ++= Seq(
-      geotoolsCoverage % Provided,
-      jaiCore % Provided,
-      jaiCodec % Provided,
-      imageIo % Provided
-    ),
-    resolvers += Repositories.osgeoReleases
+      geotoolsCoverage,
+      geotoolsHsql,
+      geotoolsMain,
+      geotoolsReferencing,
+      geotoolsMetadata,
+      geotoolsOpengis
+    ).map(_ excludeAll(excludedDependencies: _*)),
+    libraryDependencies ++= worksWithDependencies,
+    externalResolvers := Repositories.all
   )
